@@ -57,9 +57,9 @@ export const RecastAgent = forwardRef<RecastAgentRef, RecastAgentProps>(
     );
 
     useEffect(() => {
-      setNavMeshQuery(undefined);
       setCrowd(undefined);
       setCrowdHelper(undefined);
+      setNavMeshQuery(undefined);
 
       if (!navMesh) {
         return;
@@ -129,7 +129,7 @@ export const RecastAgent = forwardRef<RecastAgentRef, RecastAgentProps>(
     }, [crowd, agentTarget]);
 
     useFrame((_, delta) => {
-      if (!crowd || !crowdHelper) return;
+      if (!navMesh || !crowd || !crowdHelper) return;
       crowd.update(delta);
       crowdHelper.update();
     });
